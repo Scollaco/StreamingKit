@@ -195,7 +195,7 @@ static void PopulateOptionsWithDefault(STKAutoRecoveringHTTPDataSourceOptions* o
                 serial++;
                 
                 NSLog(@"timeoutTimerTick %lld/%lld", self.position, self.length);
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_DATA_TRANSFER_STATUS_CHANGED" object:nil userInfo:@{@"shouldShowPopup": @(1)}];
                 [self attemptReconnectWithSerial:@(serial)];
             }
         }
